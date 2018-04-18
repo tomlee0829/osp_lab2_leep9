@@ -6,28 +6,44 @@
 
 int main(int argc, char *argv[])
 {
-	//delcare
+	//delcare variables
 	FILE *stream;
-	char *line = NULL;
-	size_t len = 0;
+	char *lineptr = NULL;
+	size_t n = 0;
 	ssize_t  nread;
+	int character;
 
-	stream = fopen(argv[1],"r"); //Open text file for reading
-	if (stream == NULL)
+	//This call to fopen() takes the path to a file to open
+	//(the argument is argv[1], the filename provided by 
+	//the user), followed by the access mode (the "r" argument
+	//means read only). fopen returns a FILE * (pointer to
+	//a stream representing the open file)
+	if(stream = fopen(argv[1],"r"))
 	{
-	/*	perror("fopen");
-		exit(EXIT_FAILURE);  //exit */
-		fread(line, nread, 1, stdin);
-		printf("%s\n", line);
-		fclose(stdin);
+		//This call to getline() reads an entire line from stream
+		//since *lineptr is set to NULL and *n is set to 0
+		//before the call, getline() will allocate a buffer
+		//for storing the line
+		while((nread = getline(&lineptr, &n, stream)) != -1)
+		{
+			fwrite(line, nread, 1, stdout);
+		} 
+		
+		//This call to fclose() flushes the stream pointed to 
+		//by the stream and closes the underlying file descriptor.
+		//When successful, 0 is returned. Program exits
+		fclose(stream);
+		exit(EXIT_SUCCESS);
 	}
-
-	while((nread = getline(&line, &len, stream)) != -1)
+	else
 	{
-		fwrite(line, nread, 1, stdout);
-	} 
-
-	//free(line);
-	fclose(stream);
-	exit(EXIT_SUCCESS);
+		character = getchar();
+		while(character != EOF)
+		{
+			putchar(character);
+			character = getchar();
+		
+		}
+		return 0;
+	}
 }
