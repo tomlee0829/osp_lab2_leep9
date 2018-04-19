@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	//prints out a error message
 	if(argc > 2)
 	{
-		fprintf(stderr, "The arguments are > 2, please retry");
+		fprintf(stderr, "The arguments are > 2, please retry.\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -47,13 +47,15 @@ int main(int argc, char *argv[])
 		fclose(stream);
 		exit(EXIT_SUCCESS);
 	}
+
 	//If the file does not exist or fopen fails
 	//print an error message
-	else if((stream = fopen(argv[1],"r")) == NULL)
+	else if(argc == 2 && (stream = fopen(argv[1],"r")) == NULL)
 	{
-		perror("fopen");
+		perror("new_cat");
 		exit(EXIT_FAILURE);
 	}
+
 	//If there is no second argument
 	//repate what the user types back to stdout
 	else
