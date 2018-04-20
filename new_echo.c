@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-	//If there are not [arg] arguments, print a newline 
+	//If there are no [arg] arguments, print a newline 
 	//and end the program
 	if(argc < 2)
 	{
@@ -13,13 +13,16 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		//Loop and print
+		//Loop, increment and  print all the 
+		//arguments entered by user starting
+		//at i = 1, argv[1]
 		for(int i = 1; i < argc; i++)
 		{
-			printf(argv[i],"\n");
+			printf(argv[i]);
+			printf(" ");
 		}
 	}
 
+	printf("\n"); //print a newline
 	return 0;
-
 }
