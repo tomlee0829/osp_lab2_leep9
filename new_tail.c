@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	//to open the file 
 	path = argv[optind];
 
-	//This part will be implemented when user 
+	//This part should be implemented when user 
 	//enters no arg it should read from stdin
 	//until user hits CTRL+D, and prints out 
 	//the last N lines typed by the user
