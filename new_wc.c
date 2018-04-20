@@ -16,9 +16,9 @@ struct variable
 }wordCount; //The variable wordCount is declared with "variable"
 
 //Function that shows errors
-void errorPrint(char str[])
+void errorPrint()
 {
-	printf("Error:%s",str);
+	printf("Wrong arugments, please retry.\n");
 }
 //Function isFile() is used when user  input argument with file name
 void isFile(char fileName[])
@@ -39,8 +39,9 @@ void isFile(char fileName[])
 	{
 		//call funciton errorPrint 
 		//Prints out the error message
-		errorPrint(fileName);
-		return;
+		errorPrint();
+		exit(EXIT_FAILURE);
+		
 	}
 
 	//This call to st_size makes File word 
@@ -148,6 +149,10 @@ int main(int argc, char *argv[])
 	else if(argc == 3)
 	{
 		isFile(argv[2]);
+	}
+	else
+	{
+		errorPrint();
 	}
 	//getopt() is used to break up (parse) options
 	//in command lines for easy parsing by shell procedure
